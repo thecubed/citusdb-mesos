@@ -1,5 +1,5 @@
-# Use postgres 9.5 base image, and extend it
-FROM postgres:9.5
+# Use postgres 9.6 base image, and extend it
+FROM postgres:9.6
 
 MAINTAINER Tyler Montgomery <http://github.com/thecubed>
 
@@ -7,7 +7,7 @@ MAINTAINER Tyler Montgomery <http://github.com/thecubed>
 RUN apt-get -y update && \
 	apt-get -y install curl && \
 	curl -s https://packagecloud.io/install/repositories/citusdata/community/script.deb.sh | bash && \
-	apt-get -y install postgresql-9.5-citus unzip
+	apt-get -y install postgresql-9.6-citus=6.0.0.citus-1 unzip
 
 # Add our scripts to manage CitusDB
 ADD *.sh /docker-entrypoint-initdb.d/
